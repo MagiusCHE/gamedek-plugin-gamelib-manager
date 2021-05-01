@@ -1,0 +1,2 @@
+# gamelib.manager
+Gamedek plugin
