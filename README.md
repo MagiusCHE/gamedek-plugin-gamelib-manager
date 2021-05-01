@@ -1,2 +1,2 @@
 # gamelib.manager
-Gamedek plugin
+Gamedek plugin to handle gamelist core
