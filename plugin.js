@@ -120,6 +120,15 @@ class myplugin extends global.Plugin {
         this.#library.lastUpdate = fs.statSync(this.#lib_path).mtime
         this.log('Library saved.')
     }
+    async removeGame(hash) {
+        const gameidx = this.#library.games.findIndex(g => g.hash == hash)
+        if (gameidx==-1) {
+            throw new Error(util.format(`Missing game with hash %o`, hash))
+        }
+        this.log(`Remove game %o from library`, hash)
+        this.#library.games.splice(gameidx, 1)
+        await this.saveLibrary()
+    }
     async updateGame(info) {
         const hash = info.prev_hash || info.hash
         this.log(`Update game %o`, hash)
