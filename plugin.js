@@ -108,6 +108,8 @@ class myplugin extends global.Plugin {
 
         delete exists.lastExecutionLog //back compatibility
 
+        this.log(`Log file stored into %o`, path.join(gamelogdir, exists.hash + '.log'))
+
         fs.writeFileSync(path.join(gamelogdir, exists.hash + '.log'), typeof log == 'string' ? log : JSON.stringify(log, undefined, 2))
 
         this.saveLibrary()
