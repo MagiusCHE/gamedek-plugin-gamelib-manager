@@ -22,7 +22,7 @@ class myplugin extends global.Plugin {
         }
     }
     async loadLibrary() {
-        this.log(`Loading library...`)
+        this.log(`Loading library %o...`, this.#lib_path)
         if (fs.existsSync(this.#lib_path)) {
             this.#library = JSON.parse(fs.readFileSync(this.#lib_path).toString())
         } else {
@@ -124,7 +124,7 @@ class myplugin extends global.Plugin {
     }
     async removeGame(hash) {
         const gameidx = this.#library.games.findIndex(g => g.hash == hash)
-        if (gameidx==-1) {
+        if (gameidx == -1) {
             throw new Error(util.format(`Missing game with hash %o`, hash))
         }
         this.log(`Remove game %o from library`, hash)
